@@ -1,0 +1,33 @@
+<% layout('layouts/boilerplate')%>
+    <link rel="stylesheet" href="/stylesheets/index.css">
+    <div class="alert alert alert-success" role="alert">
+        <h1 class=''>Welcome to SpiceBook!</h1>
+        <hr>
+        <p>The only site you'll need to find amazing recipes from our community of wonderful cooks!</p>
+        <a class="btn btn-info" href="/recipes/new">Add A New Recipe</a>
+    </div>
+    <div>
+        <h2>All Recipes</h2>
+    </div>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <% for(let recipe of recipes) { %>
+            <div class="col">
+                <div class="card h-100">
+                    <% if(recipe.images.length) { %>
+                        <img class="card-img-top" alt="" src="<%=recipe.images[0].url%>">
+                    <% } else { %>
+                        <img class="card-img-top" alt="" src="https://images.unsplash.com/photo-1606914469633-bd39206ea739?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80">
+                    <% } %>
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <%=recipe.title%>
+                        </h5>
+                        <p class="card-text">
+                            <%=recipe.description%>
+                        </p>
+                        <a href="/recipes/<%=recipe._id%>" class="btn btn-success">View Recipe</a>
+                    </div>
+                </div>
+            </div>
+            <% } %>
+    </div>

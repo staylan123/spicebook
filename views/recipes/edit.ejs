@@ -1,0 +1,74 @@
+<% layout('layouts/boilerplate')%>
+
+    <h1>EDIT RECIPE</h1>
+    <form class="row g-3 needs-validation" action="/recipes/<%=recipe._id%>?_method=PUT" method="POST" id="rform" novalidate enctype="multipart/form-data">
+        <!-- RECIPE TITLE -->
+        <div class="mb-2">
+            <label for="rtitle" class="form-label">Recipe Name</label>
+            <input type="text" name="recipe[title]" id="rtitle" class="form-control" value="<%=recipe.title%>" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <!-- RECIPE PICTURE (SINGLE/URL ATM - WILL CHANGE TO UPLOAD SOON) -->
+        <div class="mb-2 col-4">
+            <label for="images" class="form-label">Upload Images</label>
+            <input class="form-control" type="file" id="images" name="image" multiple>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <!-- RECIPE DESCRIPTION (BREIF) -->
+        <div class="mb-2 col-8">
+            <label for="description" class="form-label">Brief Description of Recipe</label>
+            <input type="text" name="recipe[description]" id="description" class="form-control" value="<%=recipe.description%>" maxlength="125" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <!-- RECIPE PREP TIME -->
+        <div class="mb-2 col-6">
+            <label for="preptime" class="form-label">Prep Time</label>
+            <input type="number" name="recipe[prepTime]" id="preptime" class="form-control" value="<%=recipe.prepTime%>" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <!-- RECIPE COOK TIME -->
+        <div class="mb-2 col-6">
+            <label for="cooktime" class="form-label">Cook Time</label>
+            <input type="number" name="recipe[cookTime]" id="cooktime" class="form-control" value="<%=recipe.cookTime%>" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <!-- RECIPE INGREDIENTS -->
+        <div class="mb-2">
+            <label for="ingredients" class="form-label">Ingredients</label>
+            <textarea name="recipe[ingredients]" id="ingredients" class="form-control" value="<%=recipe.ingredients%>" required><%=recipe.ingredients%></textarea>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <!-- RECIPE INSTRUCTIONS -->
+        <div class="mb-2">
+            <label for="instructions" class="form-label">Instructions</label>
+            <textarea type="text" name="recipe[instructions]" id="instructions" class="form-control" value="<%=recipe.instructions%>" required><%=recipe.instructions%></textarea>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="mb-3">
+            <% recipe.images.forEach(function(img, i){ %> 
+                <img class="img-thumbnail" src=<%=img.thumbnail %>>
+                <div class="form-check-inline">
+                    <input type="checkbox" name="deleteImages[]" id="image-<%=i%>" value="<%=img.filename%>">
+                </div>
+                <label for="image-<%=i%>">Delete?</label>
+            <% }) %> 
+        </div>
+        <div class="mb-2">
+            <button class='"btn btn-primary col-2'>Update Recipe</button>
+        </div>
+    </form>
+    <a href="/recipes">Return To All Recipes</a>

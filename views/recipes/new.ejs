@@ -1,0 +1,67 @@
+<% layout('layouts/boilerplate')%>
+
+    <h1>NEW RECIPE</h1>
+    <form class="row g-3 needs-validation" action="/recipes" method="POST" id="rform" novalidate enctype="multipart/form-data">
+        <!-- RECIPE TITLE -->
+        <div class="mb-2">
+            <label for="rtitle" class="form-label">Recipe Name</label>
+            <input type="text" name="recipe[title]" id="rtitle" class="form-control" placeholder="Recipe Name" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <!-- RECIPE PICTURE -->
+        <div class="mb-2 col-4">
+            <label for="images" class="form-label">Upload Images</label>
+            <input class="form-control" type="file" id="images" name="image" multiple>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="mb-2 col-8">
+            <label for="description" class="form-label">Brief Description of Recipe</label>
+            <input type="text" name="recipe[description]" id="description" class="form-control" placeholder="Type a brief description of the recipe" maxlength="125" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <!-- RECIPE PREP TIME -->
+        <div class="mb-2 col-6">
+            <label for="preptime" class="form-label">Prep Time</label>
+            <input type="number" name="recipe[prepTime]" id="preptime" class="form-control" placeholder="Minutes " required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <!-- RECIPE COOK TIME -->
+        <div class="mb-2 col-6">
+            <label for="cooktime" class="form-label">Cook Time</label>
+            <input type="number" name="recipe[cookTime]" id="cooktime" class="form-control" placeholder="Minutes " required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <!-- RECIPE INGREDIENTS -->
+        <div class="mb-2">
+            <label for="ingredients" class="form-label">Ingredients</label>
+            <textarea name="recipe[ingredients]" id="ingredients" class="form-control" placeholder="List of Ingredients" required></textarea>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <!-- RECIPE INSTRUCTIONS -->
+        <div class="mb-2">
+            <label for="instructions" class="form-label">Instructions</label>
+            <textarea type="text" name="recipe[instructions]" id="instructions" class="form-control" placeholder="Cooking Instructions" required></textarea>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="mb-2">
+            <button class='"btn btn-primary col-2'>Add Recipe</button>
+        </div>
+    </form>
+    <a href="/recipes">Return To All Recipes</a>
+
+
+    <script src="../../public/javascript/ingredientButton.js"></script>
